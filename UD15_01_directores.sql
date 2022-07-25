@@ -22,8 +22,17 @@ alter table Directores
     add foreign key (dniJefe) 	references Directores (dni)
     on delete set null on update cascade;
     
-insert into Despachos (capacidad) values(3), (5), (16), (7), (4),
-						   (11), (5), (6), (13), (8);
+insert into Despachos (capacidad) values(3), 
+										(5), 
+                                        (16), 
+                                        (7), 
+                                        (4),
+                                        (11), 
+                                        (5), 
+                                        (6), 
+                                        (13), 
+                                        (8);
+
 insert into Directores (dni, nomApels, despacho, dniJefe) values('1111111A', 'Jose Montilla Barbero', 3, null), 
 																('2222222B', 'Juana Robledo Díaz', 3, '1111111A'), 
 																('3333333C', 'Feliu Ripoll Angera', 1, '1111111A'),
@@ -37,4 +46,10 @@ insert into Directores (dni, nomApels, despacho, dniJefe) values('1111111A', 'Jo
 
 commit;    
     
+-- test de integridad referencial
+
+DELETE FROM Despachos WHERE numero= 1;
+
+DELETE FROM Directores WHERE DNI='1111111A';
+
 select * from Directores;
